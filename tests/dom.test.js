@@ -474,7 +474,7 @@ test("company chop: upload in Settings, survives form auto-save, stamped on prin
   await sleep(20);
   $("#invoice-tbody [data-action='print']").click();
   await sleep(20);
-  assert.ok($("#preview-doc .sign-box .sign-line .chop"), "chop stamped on the signature line");
+  assert.ok($("#preview-doc .sign-box .sign-line .chop"), "chop stamped above the signature line");
   app.document.dispatchEvent(new app.window.KeyboardEvent("keydown", { key: "Escape" }));
   await sleep(10);
 

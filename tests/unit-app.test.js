@@ -206,13 +206,13 @@ test("print doc: omits the bank block entirely when no bank details set", () => 
   assert.ok(!html.includes("Beneficiary Bank Details"));
 });
 
-test("print doc: company chop is stamped on the signature line when set", () => {
+test("print doc: company chop is stamped above the signature line when set", () => {
   const chop = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
   const html = buildPrintDoc(piInvoice, { ...settings, company_chop: chop });
   const lineStart = html.indexOf('<div class="sign-line">');
   const lineBlock = html.slice(lineStart, html.indexOf("</div>", lineStart));
   assert.ok(html.includes('class="chop"'), "chop image should be in the signature block");
-  assert.ok(lineBlock.includes('class="chop"'), "chop should sit on the signature line (not the company name)");
+  assert.ok(lineBlock.includes('class="chop"'), "chop belongs to the signature-line block but sits above the rule");
   assert.ok(html.includes(`src="${chop}"`), "chop data URL should be the img src (escaped, base64 is safe)");
 
   const without = buildPrintDoc(piInvoice, settings);

@@ -832,7 +832,7 @@ function saveSettingsIfChanged() {
   return true;
 }
 
-/* -------- company chop (stamped on the printed signature line) -------- */
+/* -------- company chop (stamped above the printed signature line) -------- */
 
 const MAX_CHOP_BYTES = 500 * 1024; // base64 (+33%) still fits the localStorage budget comfortably
 
@@ -871,7 +871,7 @@ async function uploadChop(file) {
     const dataUrl = await readFileAsDataURL(file);
     DB.saveSettings({ company_chop: dataUrl });
     renderChopPreview();
-    toast("Company chop saved — it is stamped on the printed signature line.");
+    toast("Company chop saved — it is stamped above the printed signature line.");
   } catch (err) {
     console.error(err);
     toast("Could not read the chop file.", "alert");

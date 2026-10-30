@@ -514,19 +514,19 @@ input[type="number"] { font-variant-numeric: tabular-nums; }
 .doc-declare { font-style: italic; border-top: 1px solid #999; padding-top: 6px; }
 
 .doc-sign { margin-top: 34px; display: flex; justify-content: flex-end; }
-/* Tall signature area with room above the line for the chop to straddle it
-   without touching the company name; padding below keeps it off the footer. */
-.doc-sign .sign-box { width: 250px; padding-bottom: 44px; text-align: center; position: relative; }
+/* Tall signature area: the chop sits fully above the line, with enough room
+   that it never overlaps the company name above it. */
+.doc-sign .sign-box { width: 250px; text-align: center; position: relative; }
 .sign-company { font-weight: 700; }
-.sign-line { position: relative; border-top: 1px solid #000; margin: 64px 0 0 0; height: 0; }
+.sign-line { position: relative; border-top: 1px solid #000; margin: 96px 0 3px 0; height: 0; }
 
-/* Company chop: centred on the signature line, slightly rotated.
-   Uses an <img> (not a CSS background) so it still prints when the browser's
-   "print background graphics" option is off. */
+/* Company chop: centred above the signature line, slightly rotated, resting
+   just clear of the line. Uses an <img> (not a CSS background) so it still
+   prints when the browser's "print background graphics" option is off. */
 .sign-box .chop {
-  position: absolute; left: 50%; top: 0;
+  position: absolute; left: 50%; bottom: 0;
   width: 76px; height: auto; max-width: 76px; max-height: 76px;
-  transform: translate(-50%, -50%) rotate(-12deg);
+  transform: translate(-50%, -6px) rotate(-12deg);
   opacity: .92;
   pointer-events: none;
 }
