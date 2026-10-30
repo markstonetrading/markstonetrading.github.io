@@ -773,11 +773,8 @@ function buildPrintDoc(inv, s) {
     <div class="doc-sign">
       <div class="sign-box">
         <div>For and on behalf of</div>
-        <div class="sign-company">
-          <span class="sign-company-name">${esc(s.company_name || "—")}</span>
-          ${s.company_chop ? `<img class="chop" src="${esc(s.company_chop)}" alt="Company chop">` : ""}
-        </div>
-        <div class="sign-line"></div>
+        <div class="sign-company">${esc(s.company_name || "—")}</div>
+        <div class="sign-line">${s.company_chop ? `<img class="chop" src="${esc(s.company_chop)}" alt="Company chop">` : ""}</div>
       </div>
     </div>
 
@@ -835,7 +832,7 @@ function saveSettingsIfChanged() {
   return true;
 }
 
-/* -------- company chop (stamped on the printed company name) -------- */
+/* -------- company chop (stamped on the printed signature line) -------- */
 
 const MAX_CHOP_BYTES = 500 * 1024; // base64 (+33%) still fits the localStorage budget comfortably
 
@@ -874,7 +871,7 @@ async function uploadChop(file) {
     const dataUrl = await readFileAsDataURL(file);
     DB.saveSettings({ company_chop: dataUrl });
     renderChopPreview();
-    toast("Company chop saved — it is stamped on the printed company name.");
+    toast("Company chop saved — it is stamped on the printed signature line.");
   } catch (err) {
     console.error(err);
     toast("Could not read the chop file.", "alert");
