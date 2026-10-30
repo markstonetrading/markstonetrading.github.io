@@ -21,8 +21,8 @@ Light theme only · [Bootstrap 5](https://getbootstrap.com/) · SQLite via [sql.
 - **Repeat buyers** — the editor's *“Copy a previous buyer”* picker fills the whole Bill To block
   (contact, address, tel, email) from that buyer's most recent invoice.
 - **Company chop** — upload a PNG/SVG company chop in Settings; it is stamped (slightly rotated,
-  semi-transparent) over the signature area of every printed invoice, and travels with the database
-  on export/import.
+  semi-transparent) beside the company name on every printed invoice with only a slight overlap,
+  and travels with the database on export/import.
 - **Status quick-toggle** — change Draft / Issued / Paid / Cancelled straight from the list,
   without opening the editor.
 - **Import / export SQLite DB** — the entire database (invoices, items, settings) can be exported as a
